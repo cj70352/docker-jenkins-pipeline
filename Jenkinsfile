@@ -1,11 +1,17 @@
 node {
   checkout scm
  //env.PATH = "${tool 'Maven3'}/bin:${env.PATH}"
-  stage('Package') {
-    dir('webapp') {
-      sh 'mvn -B -DskipTests clean package'
-    }
-  }
+ //stage('Package') {
+   // dir('webapp') {
+     // sh 'mvn -B -DskipTests clean package'
+    //}
+  //}
+  stages {
+        stage('Build') {
+            steps {
+                sh 'mvn -B -DskipTests clean package'
+            }
+        }
 
   stage('Create Docker Image') {
     dir('webapp') {
