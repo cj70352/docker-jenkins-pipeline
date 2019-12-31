@@ -8,7 +8,7 @@ node {
   //}
  //stages {
         stage('Build') {
-            steps {
+            dir('webapp') {
                 sh 'mvn -B -DskipTests clean package'
             }
         }
